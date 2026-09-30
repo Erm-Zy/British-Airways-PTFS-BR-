@@ -30,7 +30,7 @@ const materialsData = [
 ];
 
 /**
- * DADOS DA FROTA
+ * DADOS DA FROTA (12 AERONAVES)
  */
 const fleetData = {
     pequeno: [
@@ -191,7 +191,7 @@ function renderFleetCards() {
                     <h3>${plane.name}</h3>
                     <p>${plane.description}</p>
                     <div class="fleet-card-footer">
-                        <span class="fleet-card-action">Ver detalhes</span>
+                        <button type="button" class="btn-secondary btn-fleet-details">Ver detalhes</button>
                     </div>
                 </div>
             `;
@@ -203,7 +203,7 @@ function renderFleetCards() {
 }
 
 /**
- * Modal de Detalhes
+ * Modal de Detalhes da Aeronave
  */
 function openFleetModal(plane) {
     const modal = document.getElementById('fleet-modal');
