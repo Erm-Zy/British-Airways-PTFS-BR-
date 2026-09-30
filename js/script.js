@@ -158,7 +158,7 @@ function renderMaterialsCards() {
                 <p>${material.description}</p>
                 ${isFleetLink 
                     ? `<a href="pages/fleet.html" class="btn-secondary btn-nav-anim">${material.buttonText}</a>`
-                    : `<button class="btn-secondary btn-toast">${material.buttonText}</button>`
+                    : `<button type="button" class="btn-secondary btn-toast">${material.buttonText}</button>`
                 }
             </div>
         `;
