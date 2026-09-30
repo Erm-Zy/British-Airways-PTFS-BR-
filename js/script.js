@@ -1,103 +1,141 @@
 /**
  * DADOS DOS MATERIAIS
- * Esta estrutura facilita a adição de novos cards no futuro.
- * Basta adicionar um novo objeto na lista.
+ * Sem uniformes/vestimentas. Organizado em 5 categorias essenciais.
  */
 const materialsData = [
     {
-        title: "Identidade Visual e Logos",
-        description: "Acesse as logos oficiais da companhia em alta resolução (PNG, SVG) para uso em edições e vídeos.",
+        title: "Identidade Visual & Logos",
+        description: "Versões em alta resolução das marcas e escudos da companhia para transmissões, edições e conteúdos gráficos.",
         buttonText: "Acessar Logos",
-        link: "#"
+        link: "#inicio"
     },
     {
-        title: "Guia de Uniformes",
-        description: "Códigos e IDs de roupas oficiais do Roblox para First Officers, Captains e Staff.",
-        buttonText: "Ver Códigos",
-        link: "#"
-    },
-    {
-        title: "Rotas e Mapas Oficiais",
-        description: "Lista de voos padrão da empresa interligando os aeroportos do PTFS.",
+        title: "Rotas & Cartas de Voo",
+        description: "Rotas padronizadas interligando os aeroportos do PTFS, acompanhadas de dados de altitude e plano de navegação.",
         buttonText: "Ver Rotas",
-        link: "#"
+        link: "#inicio"
     },
     {
-        title: "Checklists (SOP)",
-        description: "Acesso rápido aos passos de acionamento, taxi e decolagem para cada aeronave da frota.",
+        title: "Checklists Operacionais (SOP)",
+        description: "Procedimentos passo a passo para preparação da cabine, acionamento, táxi, cruzeiro e pouso com segurança.",
         buttonText: "Abrir Checklists",
-        link: "#"
+        link: "#inicio"
     },
     {
-        title: "Banners e Redes Sociais",
-        description: "Materiais gráficos pré-prontos para postagens oficiais e templates para recrutamento.",
+        title: "Conteúdo & Mídia Social",
+        description: "Banners, artes promocionais e templates oficiais disponibilizados para divulgação de voos e recrutamento.",
         buttonText: "Ver Banners",
-        link: "#"
+        link: "#inicio"
     },
     {
         title: "Frota de Aeronaves",
-        description: "Requisitos de Rank e informações detalhadas sobre as aeronaves operadas pela VA no jogo.",
+        description: "Ficha técnica e especificações dos modelos operados pela companhia no jogo, organizados por nível de experiência.",
         buttonText: "Ver Frota",
-        link: "#"
+        link: "#inicio"
     }
 ];
 
 /**
- * FUNÇÃO: Renderizar Cards Dinamicamente
- * Injeta os dados da lista acima diretamente no HTML.
+ * Renderiza os cards de materiais dinamicamente no HTML
  */
 function renderMaterialsCards() {
     const grid = document.getElementById('materials-grid');
-    
-    // Caso o elemento não seja encontrado na página, interrompe
-    if (!grid) return; 
+    if (!grid) return;
+
+    grid.innerHTML = '';
 
     materialsData.forEach(material => {
-        // Criando a estrutura HTML do Card
-        const cardHTML = `
-            <div class="card">
-                <div class="placeholder-card-img">[ PLACEHOLDER — MATERIAL: ${material.title.toUpperCase()} ]</div>
-                <div class="card-body">
-                    <h3>${material.title}</h3>
-                    <p>${material.description}</p>
-                    <a href="${material.link}" class="btn-secondary">${material.buttonText}</a>
-                </div>
+        const cardElement = document.createElement('div');
+        cardElement.className = 'card reveal';
+        cardElement.innerHTML = `
+            <div class="placeholder-card-img">[ PLACEHOLDER — ${material.title.toUpperCase()} ]</div>
+            <div class="card-body">
+                <h3>${material.title}</h3>
+                <p>${material.description}</p>
+                <a href="${material.link}" class="btn-secondary">${material.buttonText}</a>
             </div>
         `;
-        
-        // Inserindo na grid
-        grid.innerHTML += cardHTML;
+        grid.appendChild(cardElement);
     });
 }
 
 /**
- * FUNÇÃO: Menu Mobile (Hambúrguer)
- * Alterna a visibilidade do menu de navegação em telas pequenas.
+ * Configura o menu mobile e suas interações
  */
 function setupMobileMenu() {
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+    if (!menuToggle || !navMenu) return;
 
-        // Fecha o menu ao clicar em algum link
-        const links = navMenu.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
+    // Alternar abertura do menu
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Fechar ao clicar em qualquer link da navegação
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navMenu.classList.remove('active');
         });
-    }
+    });
 }
 
 /**
- * INICIALIZAÇÃO
- * Roda as funções assim que o conteúdo da página carrega.
+ * Animações ao rolar a página (Intersection Observer for Scroll Reveal)
+ */
+function setupScrollAnimations() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Anima apenas uma vez
+            }
+        });
+    }, observerOptions);
+
+    // Seleciona todos os elementos com a classe .reveal
+    document.querySelectorAll('.reveal').forEach(element => {
+        observer.observe(element);
+    });
+}
+
+/**
+ * Navegação suave para todos os botões e links âncora
+ */
+function setupSmoothNavigation() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+/**
+ * Inicialização completa dos scripts após o carregamento do DOM
  */
 document.addEventListener('DOMContentLoaded', () => {
     renderMaterialsCards();
     setupMobileMenu();
+    setupScrollAnimations();
+    setupSmoothNavigation();
 });
