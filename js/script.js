@@ -25,10 +25,118 @@ const materialsData = [
     },
     {
         title: "Frota de Aeronaves",
-        description: "Ficha técnica e especificações dos modelos operados pela companhia no jogo, organizados por nível de experiência.",
+        description: "Ficha técnica e especificações dos modelos operados pela companhia no jogo, organizados por categoria de porte.",
         buttonText: "Ver Frota"
     }
 ];
+
+/**
+ * DADOS DA FROTA (12 AERONAVES DIVIDIDAS EM 3 CATEGORIAS)
+ */
+const fleetData = {
+    pequeno: [
+        {
+            name: "Embraer 190",
+            badge: "Pequeno Porte · A1",
+            badgeClass: "badge-small",
+            placeholder: "[ PLACEHOLDER — EMBRAER 190 ]",
+            description: "Jato regional ágil e eficiente, ideal para conectar hubs regionais com rápida resposta de comandos no PTFS.",
+            details: "Excelente para etapas curtas, fácil dirigibilidade em táxi e aproximações de precisão em pistas regionais do mapa."
+        },
+        {
+            name: "ATR 72",
+            badge: "Pequeno Porte · A1",
+            badgeClass: "badge-small",
+            placeholder: "[ PLACEHOLDER — ATR 72 ]",
+            description: "Turboélice versátil para rotas curtas, oferecendo pousos suaves e excelente operação em pistas reduzidas.",
+            details: "Aeronave turboélice referência em operacionalidade regional, perfeita para voos de instrução e etapas curtas no PTFS."
+        },
+        {
+            name: "CRJ-700",
+            badge: "Pequeno Porte · A1",
+            badgeClass: "badge-small",
+            placeholder: "[ PLACEHOLDER — CRJ-700 ]",
+            description: "Jato executivo e regional com voo estável e alta velocidade de cruzeiro para rotas de menor densidade.",
+            details: "Combina excelente desempenho de subida com ótimo perfil de aproximação para operações regionais rápidas."
+        }
+    ],
+    medio: [
+        {
+            name: "Airbus A320",
+            badge: "Médio Porte · B2",
+            badgeClass: "badge-medium",
+            placeholder: "[ PLACEHOLDER — AIRBUS A320 ]",
+            description: "Aeronave de médio porte amplamente utilizada em voos domésticos e internacionais de média distância no PTFS.",
+            details: "Modelo clássico de alta manuseabilidade, estabilidade em cruzeiro e voo intuitivo para todos os pilotos."
+        },
+        {
+            name: "Boeing 737",
+            badge: "Médio Porte · B2",
+            badgeClass: "badge-medium",
+            placeholder: "[ PLACEHOLDER — BOEING 737 ]",
+            description: "Bimotor consagrado para rotas continentais, combinando versatilidade e excelente resposta nos procedimentos de pouso.",
+            details: "Espinha dorsal da aviação comercial virtual, ideal para voos regulares entre os principais aeroportos do PTFS."
+        },
+        {
+            name: "Boeing 757",
+            badge: "Médio Porte · B2",
+            badgeClass: "badge-medium",
+            placeholder: "[ PLACEHOLDER — BOEING 757 ]",
+            description: "Aeronave com alto desempenho de subida e grande alcance para rotas de média e longa distância de densidade média.",
+            details: "Reconhecido por sua potência e estabilidade em altitude, sendo uma excelente opção para voos em evento e comboios."
+        }
+    ],
+    grande: [
+        {
+            name: "Airbus A350",
+            badge: "Grande Porte · C3",
+            badgeClass: "badge-large",
+            placeholder: "[ PLACEHOLDER — AIRBUS A350 ]",
+            description: "Widebody moderno de última geração para voos de longo curso com navegação precisa e extrema estabilidade.",
+            details: "Destaque em tecnologia de cabine e eficiência aerodinâmica em rotas de longa distância nas operações virtuais."
+        },
+        {
+            name: "Boeing 747",
+            badge: "Grande Porte · C3",
+            badgeClass: "badge-large",
+            placeholder: "[ PLACEHOLDER — BOEING 747 ]",
+            description: "O clássico 'Jumbo Jet' de dois andares, utilizado em voos solenes e de grande capacidade de passageiros.",
+            details: "Ícone da aviação mundial, oferecendo uma presença marcante na pista e pilotagem desafiadora e compensadora."
+        },
+        {
+            name: "Airbus A380",
+            badge: "Grande Porte · C3",
+            badgeClass: "badge-large",
+            placeholder: "[ PLACEHOLDER — AIRBUS A380 ]",
+            description: "A maior aeronave comercial de passageiros do mundo, ideal para voos festivos e operações de grande público.",
+            details: "O gigante dos céus exige planejamento na aproximação e pátio dedicado, garantindo visual espetacular no jogo."
+        },
+        {
+            name: "Boeing 767",
+            badge: "Grande Porte · C3",
+            badgeClass: "badge-large",
+            placeholder: "[ PLACEHOLDER — BOEING 767 ]",
+            description: "Aeronave de duplo corredor consagrada, excelente para transições entre rotas médias e voos intercontinentais.",
+            details: "Combinação equilibrada de porte e dirigibilidade, perfeita para linhas de longa distância do grupo."
+        },
+        {
+            name: "Boeing 777",
+            badge: "Grande Porte · C3",
+            badgeClass: "badge-large",
+            placeholder: "[ PLACEHOLDER — BOEING 777 ]",
+            description: "Bimotor de longo alcance potente e estável, altamente requisitado em rotas internacionais da companhia.",
+            details: "Aeronave símbolo de viagens intercontinentais virtuais, com excelente sustentação e resposta equilibrada."
+        },
+        {
+            name: "Boeing 787",
+            badge: "Grande Porte · C3",
+            badgeClass: "badge-large",
+            placeholder: "[ PLACEHOLDER — BOEING 787 ]",
+            description: "Jato comercial ultra moderno e eficiente, perfeito para voos diretos e longas jornadas com suavidade.",
+            details: "Equipado com asas de alta flexibilidade e sistemas avançados para voos noturnos e transoceânicos no PTFS."
+        }
+    ]
+};
 
 /**
  * Renderiza os cards de materiais dinamicamente no HTML
@@ -42,15 +150,129 @@ function renderMaterialsCards() {
     materialsData.forEach(material => {
         const cardElement = document.createElement('div');
         cardElement.className = 'card reveal';
+        const isFleetLink = material.title === "Frota de Aeronaves";
+        
         cardElement.innerHTML = `
             <div class="placeholder-card-img">[ PLACEHOLDER — ${material.title.toUpperCase()} ]</div>
             <div class="card-body">
                 <h3>${material.title}</h3>
                 <p>${material.description}</p>
-                <button class="btn-secondary btn-toast">${material.buttonText}</button>
+                ${isFleetLink 
+                    ? `<a href="#frota" class="btn-secondary">${material.buttonText}</a>`
+                    : `<button class="btn-secondary btn-toast">${material.buttonText}</button>`
+                }
             </div>
         `;
         grid.appendChild(cardElement);
+    });
+}
+
+/**
+ * Renderiza os cards da frota divididos por categoria
+ */
+function renderFleetCards() {
+    const categories = ['pequeno', 'medio', 'grande'];
+
+    categories.forEach(catKey => {
+        const grid = document.getElementById(`fleet-${catKey}`);
+        if (!grid) return;
+
+        grid.innerHTML = '';
+
+        fleetData[catKey].forEach(plane => {
+            const card = document.createElement('div');
+            card.className = 'card fleet-card reveal';
+
+            card.innerHTML = `
+                <div class="placeholder-card-img">${plane.placeholder}</div>
+                <div class="card-body">
+                    <div class="card-top">
+                        <span class="category-badge ${plane.badgeClass}">${plane.badge}</span>
+                    </div>
+                    <h3>${plane.name}</h3>
+                    <p>${plane.description}</p>
+                    <div class="fleet-card-footer">
+                        <span class="fleet-card-action">Ver detalhes &rarr;</span>
+                    </div>
+                </div>
+            `;
+
+            card.addEventListener('click', () => openFleetModal(plane));
+            grid.appendChild(card);
+        });
+    });
+}
+
+/**
+ * Controla a abertura do Modal de Detalhes da Aeronave
+ */
+function openFleetModal(plane) {
+    const modal = document.getElementById('fleet-modal');
+    if (!modal) return;
+
+    document.getElementById('modal-img-placeholder').innerText = plane.placeholder;
+    const badgeElem = document.getElementById('modal-badge');
+    badgeElem.innerText = plane.badge;
+    badgeElem.className = `category-badge ${plane.badgeClass}`;
+    document.getElementById('modal-title').innerText = plane.name;
+    document.getElementById('modal-desc').innerText = plane.description;
+    document.getElementById('modal-details').innerText = plane.details;
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Fechamento do Modal
+ */
+function setupModalClose() {
+    const modal = document.getElementById('fleet-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const btnModalClose = document.getElementById('modal-btn-close');
+
+    if (!modal) return;
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (btnModalClose) btnModalClose.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+/**
+ * Controla o botão Voltar ao Topo
+ */
+function setupBackToTop() {
+    const backBtn = document.getElementById('back-to-top');
+    if (!backBtn) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backBtn.classList.add('visible');
+        } else {
+            backBtn.classList.remove('visible');
+        }
+    });
+
+    backBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 }
 
@@ -102,7 +324,7 @@ function setupScrollspy() {
 
     window.addEventListener('scroll', () => {
         let currentSection = '';
-        const scrollPosition = window.scrollY + 120;
+        const scrollPosition = window.scrollY + 140;
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
@@ -203,6 +425,9 @@ function setupSmoothNavigation() {
  */
 document.addEventListener('DOMContentLoaded', () => {
     renderMaterialsCards();
+    renderFleetCards();
+    setupModalClose();
+    setupBackToTop();
     setupMobileMenu();
     setupSmartNavbar();
     setupScrollspy();
