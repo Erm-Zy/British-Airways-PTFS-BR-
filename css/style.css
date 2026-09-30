@@ -22,6 +22,9 @@
     --shadow-hover: 0 18px 36px -12px rgba(0, 32, 91, 0.15);
     
     --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Variável global para gerenciar altura fixa do cabeçalho */
+    --header-height: 80px;
 }
 
 /* =========================================================================
@@ -35,6 +38,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Previne scroll horizontal em vazamentos de layout ou zoom */
 }
 
 body {
@@ -43,7 +47,7 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Garantia em todos os breakpoints */
     opacity: 0;
     transform: translateY(4px);
     transition: opacity 0.35s ease, transform 0.35s ease;
@@ -257,12 +261,14 @@ ul {
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    padding: 16px 0;
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
     transition: var(--transition);
 }
 
 .navbar.scrolled {
-    padding: 12px 0;
+    min-height: 64px;
     background-color: rgba(255, 255, 255, 0.98);
     box-shadow: var(--shadow-subtle);
 }
@@ -351,8 +357,7 @@ ul {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 72px;
-    padding: 80px 0;
+    padding: calc(var(--header-height) + 40px) 0 80px 0; /* Padding-top estrutural seguro contra menu engolindo a página */
     overflow: hidden;
 }
 
@@ -409,10 +414,15 @@ ul {
 }
 
 .page-header {
-    margin-top: 72px;
-    padding: 48px 0 32px 0;
     background-color: var(--surface-color);
     border-bottom: 1px solid var(--border-color);
+    padding: calc(var(--header-height) + 32px) 0 40px 0; /* O espaçamento protege o botão Voltar */
+}
+
+.page-header-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .page-header-content {
@@ -894,7 +904,7 @@ ul {
 }
 
 /* =========================================================================
-   RESPONSIVIDADE (MOBILE & TABLETS)
+   RESPONSIVIDADE (MOBILE & TABLETS) E PREVENÇÃO DE QUEBRAS COM ZOOM
    ========================================================================= */
 @media (max-width: 900px) {
     .hero-content h1 {
@@ -916,16 +926,17 @@ ul {
         display: flex;
     }
 
+    /* Menu mobile com largura encapsulada no viewport 100vw sem vazar em zooms menores */
     .nav-menu {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 80%;
+        right: -100vw;
+        width: 100%;
         max-width: 320px;
         height: 100vh;
         background-color: var(--surface-color);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
-        padding: 100px 32px 40px 32px;
+        padding: calc(var(--header-height) + 20px) 32px 40px 32px;
         transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 999;
     }
