@@ -1,1 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frota Operacional | British Airways PTFS BR</title>
+    
+    <!-- Fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Estilos globais -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho (Navegação Fixo) -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo-link" aria-label="Ir para a página inicial">
+                <div class="placeholder-logo">[ PLACEHOLDER — LOGO DA COMPANHIA ]</div>
+            </a>
+            
+            <nav id="nav-menu" class="nav-menu">
+                <ul>
+                    <li><a href="../index.html#inicio" class="nav-link">Início</a></li>
+                    <li><a href="../index.html#materiais" class="nav-link">Materiais</a></li>
+                    <li><a href="fleet.html" class="nav-link active">Frota</a></li>
+                    <li><a href="../index.html#destaques" class="nav-link">Destaques</a></li>
+                    <li><a href="../index.html#galeria" class="nav-link">Galeria</a></li>
+                </ul>
+            </nav>
+            
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Banner de Cabeçalho da Página -->
+    <section class="page-header">
+        <div class="container">
+            <a href="../index.html" class="btn-back">&larr; Voltar à página inicial</a>
+            <div class="page-header-content reveal">
+                <span class="hero-badge">Catálogo Oficial</span>
+                <h1>Nossa Frota</h1>
+                <p>Conheça a frota completa padronizada da British Airways PTFS BR. Aeronaves organizadas por portes e configuradas para a máxima precisão operacional em nossas rotas e eventos no PTFS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção da Frota por Categorias -->
+    <section class="section bg-light">
+        <div class="container">
+
+            <!-- Categoria Pequeno Porte -->
+            <div class="fleet-category reveal">
+                <div class="category-header">
+                    <span class="category-badge badge-small">Pequeno Porte · A1</span>
+                    <h2>Aeronaves Regionais</h2>
+                    <p>Modelos ágeis idealizados para conexões regionais e pistas curtas no jogo.</p>
+                </div>
+                <div class="grid-cards fleet-grid" id="fleet-pequeno"></div>
+            </div>
+
+            <!-- Categoria Médio Porte -->
+            <div class="fleet-category reveal">
+                <div class="category-header">
+                    <span class="category-badge badge-medium">Médio Porte · B2</span>
+                    <h2>Aeronaves de Corredor Único</h2>
+                    <p>A espinha dorsal de nossas operações continentais e rotas de média distância.</p>
+                </div>
+                <div class="grid-cards fleet-grid" id="fleet-medio"></div>
+            </div>
+
+            <!-- Categoria Grande Porte -->
+            <div class="fleet-category reveal">
+                <div class="category-header">
+                    <span class="category-badge badge-large">Grande Porte · C3</span>
+                    <h2>Aeronaves Widebody</h2>
+                    <p>Gigantes intercontinentais para voos de longo curso, eventos solenes e grandes grupos.</p>
+                </div>
+                <div class="grid-cards fleet-grid" id="fleet-grande"></div>
+            </div>
+
+            <!-- Botão de Retorno no Fim da Página -->
+            <div class="bottom-return-container reveal">
+                <a href="../index.html" class="btn-secondary">&larr; Voltar para a Página Principal</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="placeholder-logo-small">[ PLACEHOLDER — LOGO ]</div>
+                <p>British Airways PTFS BR<br>Simulando a excelência na aviação virtual do Roblox.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navegação</h4>
+                <ul>
+                    <li><a href="../index.html#inicio">Início</a></li>
+                    <li><a href="../index.html#materiais">Materiais</a></li>
+                    <li><a href="fleet.html">Frota</a></li>
+                    <li><a href="../index.html#destaques">Destaques</a></li>
+                    <li><a href="../index.html#galeria">Galeria</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Comunidade</h4>
+                <ul>
+                    <li><a href="https://discord.gg/84JDVBz6Fz" target="_blank" rel="noopener noreferrer">Servidor do Discord</a></li>
+                    <li><a href="https://www.tiktok.com/@british.airways.brptfs?_r=1&_t=ZS-9A9cebvQNyE" target="_blank" rel="noopener noreferrer">TikTok Oficial</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 British Airways PTFS BR. Todos os direitos reservados. Protótipo Hub de Materiais & Frota.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <button class="back-to-top" id="back-to-top" aria-label="Voltar ao topo">&#8593;</button>
+
+    <!-- Modal para Detalhes da Aeronave -->
+    <div class="modal-overlay" id="fleet-modal" aria-hidden="true">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close" aria-label="Fechar modal">&times;</button>
+            <div class="modal-header">
+                <div class="placeholder-modal-img" id="modal-img-placeholder">[ PLACEHOLDER ]</div>
+            </div>
+            <div class="modal-body">
+                <span class="category-badge" id="modal-badge">Porte</span>
+                <h3 id="modal-title">Nome da Aeronave</h3>
+                <p id="modal-desc">Descrição curta...</p>
+                <div class="modal-extra">
+                    <h4>Operação no PTFS</h4>
+                    <p id="modal-details">Detalhes adicionais...</p>
+                </div>
+                <button class="btn-primary btn-modal-close" id="modal-btn-close">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lógica de interação -->
+    <script src="../js/script.js"></script>
+</body>
+</html>
 
