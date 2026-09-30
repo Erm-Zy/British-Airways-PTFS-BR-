@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>British Airways PTFS BR | Hub de Materiais</title>
+    
+    <!-- Link para a fonte Inter (Moderna e Limpa) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link para o arquivo de estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <!-- Cabeçalho (Navegação) -->
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="placeholder-logo">[ PLACEHOLDER - LOGO DA COMPANHIA ]</div>
+            </div>
+            
+            <nav id="nav-menu" class="nav-menu">
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#materiais">Materiais</a></li>
+                    <li><a href="#destaques">Destaques</a></li>
+                    <li><a href="#galeria">Galeria</a></li>
+                </ul>
+            </nav>
+            
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Seção Principal (Hero) -->
+    <section id="inicio" class="hero">
+        <div class="placeholder-hero-bg">[ PLACEHOLDER — BANNER PRINCIPAL ]</div>
+        <div class="container hero-content">
+            <h1>Excelência em Operações Virtuais</h1>
+            <p>Bem-vindo ao Hub de Materiais da British Airways PTFS BR. Aqui você encontra tudo o que precisa para elevar o seu nível de roleplay.</p>
+            <a href="#materiais" class="btn-primary">Acessar Materiais</a>
+        </div>
+    </section>
+
+    <!-- Seção de Materiais (Cards gerados via JS) -->
+    <section id="materiais" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossos Materiais</h2>
+                <p>Recursos, manuais e identidades visuais para uso em operações.</p>
+            </div>
+            
+            <!-- Os cards serão injetados aqui pelo script.js -->
+            <div class="grid-cards" id="materials-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Destaques -->
+    <section id="destaques" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Documentos em Destaque</h2>
+                <p>Os manuais e guias mais importantes para a nossa tripulação.</p>
+            </div>
+            
+            <div class="grid-cards highlights-grid">
+                <!-- Destaque 1 -->
+                <div class="card highlight-card">
+                    <div class="placeholder-card-img">[ PLACEHOLDER — FOTO DA AERONAVE / SOP ]</div>
+                    <div class="card-body">
+                        <h3>SOP (Standard Operating Procedures)</h3>
+                        <p>O manual completo de procedimentos operacionais para todas as aeronaves da nossa frota no PTFS.</p>
+                        <a href="#" class="btn-secondary">Visualizar Documento</a>
+                    </div>
+                </div>
+                
+                <!-- Destaque 2 -->
+                <div class="card highlight-card">
+                    <div class="placeholder-card-img">[ PLACEHOLDER — BANNER DE COMUNICAÇÃO ]</div>
+                    <div class="card-body">
+                        <h3>Guia de Comunicação ATC</h3>
+                        <p>Fraseologia oficial e estrutura de comunicação para uso em texto e voz durante os voos acompanhados.</p>
+                        <a href="#" class="btn-secondary">Visualizar Documento</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Galeria -->
+    <section id="galeria" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Galeria Visual</h2>
+                <p>Registros oficiais de nossos comboios e operações em grupo.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <div class="placeholder-gallery span-2">[ PLACEHOLDER — FOTO PANORÂMICA (HORIZONTAL) ]</div>
+                <div class="placeholder-gallery">[ PLACEHOLDER — FOTO 2 ]</div>
+                <div class="placeholder-gallery">[ PLACEHOLDER — FOTO 3 ]</div>
+                <div class="placeholder-gallery tall">[ PLACEHOLDER — FOTO VERTICAL (RETRATO) ]</div>
+                <div class="placeholder-gallery">[ PLACEHOLDER — FOTO 5 ]</div>
+                <div class="placeholder-gallery span-2">[ PLACEHOLDER — FOTO PANORÂMICA (HORIZONTAL) ]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="placeholder-logo-small">[ PLACEHOLDER - LOGO ]</div>
+                <p>British Airways PTFS BR<br>Simulando a excelência no Roblox.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navegação rápida</h4>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#materiais">Materiais</a></li>
+                    <li><a href="#destaques">Destaques</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Comunidade</h4>
+                <ul>
+                    <li><a href="#">Servidor do Discord</a></li>
+                    <li><a href="#">Grupo no Roblox</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 British Airways PTFS BR. Protótipo de Hub de Materiais.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Link para o JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
