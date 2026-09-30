@@ -69,7 +69,8 @@ ul {
 .placeholder-logo-small,
 .placeholder-hero-bg,
 .placeholder-card-img,
-.placeholder-gallery {
+.placeholder-gallery,
+.placeholder-modal-img {
     background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
     border: 1px dashed #94A3B8;
     display: flex;
@@ -124,6 +125,12 @@ ul {
 .placeholder-gallery:hover {
     border-color: var(--border-hover);
     transform: scale(1.01);
+}
+
+.placeholder-modal-img {
+    height: 200px;
+    width: 100%;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 
 /* =========================================================================
@@ -429,6 +436,113 @@ ul {
     padding: 10px 20px;
     font-size: 0.88rem;
 }
+/* =========================================================================
+   SEÇÃO DE FROTA & CATEGORIAS
+   ========================================================================= */
+.fleet-category {
+    margin-bottom: 64px;
+}
+
+.fleet-category:last-child {
+    margin-bottom: 0;
+}
+
+.category-header {
+    margin-bottom: 24px;
+}
+
+.category-header h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.category-header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.badge-small {
+    background-color: #E0F2FE;
+    color: #0369A1;
+    border: 1px solid #BAE6FD;
+}
+
+.badge-medium {
+    background-color: #FEF3C7;
+    color: #B45309;
+    border: 1px solid #FDE68A;
+}
+
+.badge-large {
+    background-color: #FEE2E2;
+    color: #B91C1C;
+    border: 1px solid #FECACA;
+}
+
+.fleet-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.fleet-card .card-body {
+    padding: 20px 24px;
+}
+
+.fleet-card .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.fleet-card h3 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.fleet-card p {
+    font-size: 0.92rem;
+    margin-bottom: 18px;
+}
+
+.fleet-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+.fleet-card-action {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.fleet-card:hover .fleet-card-action {
+    color: var(--accent-color);
+    transform: translateX(3px);
+}
 
 /* =========================================================================
    GALERIA MASONRY CLEAN
@@ -534,6 +648,151 @@ ul {
 }
 
 /* =========================================================================
+   BOTÃO VOLTAR AO TOPO
+   ========================================================================= */
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(1, 30, 65, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    z-index: 990;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* =========================================================================
+   MODAL DE DETALHES DA AERONAVE
+   ========================================================================= */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(15, 23, 42, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background-color: var(--surface-color);
+    border-radius: var(--radius-lg);
+    max-width: 520px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    transform: scale(0.95) translateY(10px);
+    transition: var(--transition);
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: none;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--text-main);
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    background-color: #FFFFFF;
+    color: var(--accent-color);
+}
+
+.modal-body {
+    padding: 28px;
+}
+
+.modal-body h3 {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.modal-body p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
+.modal-extra {
+    margin-top: 20px;
+    padding: 16px;
+    background-color: #F8FAFC;
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--primary-color);
+}
+
+.modal-extra h4 {
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+}
+
+.modal-extra p {
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.btn-modal-close {
+    margin-top: 24px;
+    width: 100%;
+}
+
+/* =========================================================================
    ANIMAÇÕES REVEAL (SCROLL FLUIDO)
    ========================================================================= */
 .reveal {
@@ -605,5 +864,9 @@ ul {
     .hero-actions .btn-primary,
     .hero-actions .btn-secondary {
         width: 100%;
+    }
+
+    .grid-cards {
+        grid-template-columns: 1fr;
     }
 }
