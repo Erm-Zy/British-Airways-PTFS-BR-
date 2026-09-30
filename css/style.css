@@ -49,8 +49,7 @@ body {
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden; /* Garantia em todos os breakpoints */
     opacity: 0;
-    /* O transform foi removido para consertar o BUG de position: fixed (Containing Block) */
-    transition: opacity 0.35s ease; 
+    transition: opacity 0.35s ease;
 }
 
 body.page-loaded {
@@ -131,22 +130,21 @@ ul {
 }
 
 .placeholder-gallery {
-    height: 100%;
-    min-height: 220px;
+    width: 100%;
+    aspect-ratio: 16 / 10;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
 }
 
 .placeholder-gallery:hover {
     border-color: var(--border-hover);
-    transform: scale(1.01);
+    transform: scale(1.02);
 }
 
-/* Classe exclusiva para integrar as imagens injetadas na galeria */
+/* Estilo padronizado horizontal para todas as imagens da galeria */
 .gallery-img {
     width: 100%;
-    height: 100%;
-    min-height: 220px;
+    aspect-ratio: 16 / 10;
     object-fit: cover;
     border-radius: var(--radius-md);
     border: 1px solid var(--border-color);
@@ -156,7 +154,7 @@ ul {
 
 .gallery-img:hover {
     border-color: var(--border-hover);
-    transform: scale(1.01);
+    transform: scale(1.02);
 }
 
 .placeholder-modal-img {
@@ -640,21 +638,12 @@ ul {
 }
 
 /* =========================================================================
-   GALERIA MASONRY CLEAN
+   GALERIA HORIZONTAL UNIFORME
    ========================================================================= */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
-    grid-auto-rows: 240px;
-}
-
-.gallery-grid .span-2 {
-    grid-column: span 2;
-}
-
-.gallery-grid .tall {
-    grid-row: span 2;
 }
 
 /* =========================================================================
@@ -924,10 +913,6 @@ ul {
 @media (max-width: 900px) {
     .hero-content h1 {
         font-size: 2.4rem;
-    }
-
-    .gallery-grid .span-2 {
-        grid-column: span 1;
     }
     
     .footer-grid {
