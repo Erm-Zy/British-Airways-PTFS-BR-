@@ -6,11 +6,11 @@
     --primary-light: #0A2F5C;      /* Variativo sutil para hovers */
     --accent-color: #E31837;       /* Vermelho British Airways */
     --accent-hover: #C0122B;       /* Vermelho escuro para hover */
-    --background-color: #F8FAFC;  /* Fundo ultra-clean com tom neutro suave */
+    --background-color: #F8FAFC;  /* Fundo ultra-clean */
     --surface-color: #FFFFFF;     /* Branco puro para cards */
     --text-main: #0F172A;         /* Texto escuro com alto contraste */
     --text-muted: #64748B;       /* Texto secundário moderno */
-    --border-color: #E2E8F0;     /* Bordas extremamente sutis */
+    --border-color: #E2E8F0;     /* Bordas sutis */
     --border-hover: #CBD5E1;      /* Borda ao focar */
     
     --radius-sm: 8px;
@@ -63,7 +63,7 @@ ul {
 }
 
 /* =========================================================================
-   ESTILIZAÇÃO DOS PLACEHOLDERS (INTEGRADOS AO DESIGN)
+   ESTILIZAÇÃO DOS PLACEHOLDERS
    ========================================================================= */
 .placeholder-logo,
 .placeholder-logo-small,
@@ -155,10 +155,9 @@ ul {
 }
 
 .btn-secondary {
-    background-color: transparent;
+    background-color: var(--surface-color);
     color: var(--primary-color);
     border: 1.5px solid var(--border-color);
-    background-color: var(--surface-color);
 }
 
 .btn-secondary:hover {
@@ -194,8 +193,14 @@ ul {
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
-    padding: 14px 0;
+    padding: 16px 0;
     transition: var(--transition);
+}
+
+.navbar.scrolled {
+    padding: 12px 0;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-subtle);
 }
 
 .nav-container {
@@ -229,11 +234,14 @@ ul {
     transition: var(--transition);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link.active {
     color: var(--primary-color);
+    font-weight: 600;
 }
 
-.nav-link:hover::after {
+.nav-link:hover::after,
+.nav-link.active::after {
     width: 100%;
 }
 
@@ -491,6 +499,38 @@ ul {
     text-align: center;
     color: #64748B;
     font-size: 0.88rem;
+}
+
+/* =========================================================================
+   SISTEMA DE NOTIFICAÇÃO TOAST
+   ========================================================================= */
+.toast-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.toast {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    padding: 14px 20px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid var(--accent-color);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: var(--transition);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* =========================================================================
