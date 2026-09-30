@@ -23,7 +23,6 @@
     
     --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     
-    /* Variável global para gerenciar altura fixa do cabeçalho */
     --header-height: 80px;
 }
 
@@ -38,7 +37,7 @@
 
 html {
     scroll-behavior: smooth;
-    overflow-x: hidden; /* Previne scroll horizontal em vazamentos de layout ou zoom */
+    overflow-x: hidden;
 }
 
 body {
@@ -47,7 +46,7 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden; /* Garantia em todos os breakpoints */
+    overflow-x: hidden;
     opacity: 0;
     transition: opacity 0.35s ease;
 }
@@ -77,7 +76,7 @@ ul {
 }
 
 /* =========================================================================
-   PLACEHOLDERS INTEGRADOS & IMAGENS DA GALERIA
+   PLACEHOLDERS & IMAGENS DA GALERIA
    ========================================================================= */
 .placeholder-logo,
 .placeholder-logo-small,
@@ -141,7 +140,6 @@ ul {
     transform: scale(1.02);
 }
 
-/* Estilo padronizado horizontal para todas as imagens da galeria */
 .gallery-img {
     width: 100%;
     aspect-ratio: 16 / 10;
@@ -164,7 +162,7 @@ ul {
 }
 
 /* =========================================================================
-   BOTÕES, ANIMAÇÃO DE PROGRESSO & MICROINTERAÇÕES
+   BOTÕES & PROGRESSO
    ========================================================================= */
 .btn-primary, .btn-secondary, .btn-back {
     position: relative;
@@ -236,7 +234,6 @@ ul {
     border-color: var(--primary-color);
 }
 
-/* Barra de Progresso do Botão ao Clicar */
 .btn-progress-bar {
     position: absolute;
     bottom: 0;
@@ -262,7 +259,7 @@ ul {
 }
 
 /* =========================================================================
-   CABEÇALHO E NAVEGAÇÃO
+   CABEÇALHO
    ========================================================================= */
 .navbar {
     position: fixed;
@@ -361,7 +358,7 @@ ul {
 }
 
 /* =========================================================================
-   SEÇÃO HERO E PAGE HEADER
+   HERO & PAGE HEADER
    ========================================================================= */
 .hero {
     position: relative;
@@ -538,7 +535,7 @@ ul {
 }
 
 /* =========================================================================
-   SEÇÃO DE FROTA & CATEGORIAS
+   FROTA & CATEGORIAS
    ========================================================================= */
 .fleet-category {
     margin-bottom: 56px;
@@ -638,7 +635,7 @@ ul {
 }
 
 /* =========================================================================
-   GALERIA HORIZONTAL UNIFORME
+   GALERIA HORIZONTAL
    ========================================================================= */
 .gallery-grid {
     display: grid;
@@ -647,7 +644,7 @@ ul {
 }
 
 /* =========================================================================
-   RODAPÉ (FOOTER)
+   RODAPÉ
    ========================================================================= */
 .footer {
     background-color: var(--primary-color);
@@ -699,7 +696,7 @@ ul {
 }
 
 /* =========================================================================
-   SISTEMA TOAST, BACK-TO-TOP E MODAL (CORRIGIDO)
+   TOAST, BACK-TO-TOP & MODAL
    ========================================================================= */
 .toast-container {
     position: fixed;
@@ -764,7 +761,6 @@ ul {
     transform: translateY(-3px);
 }
 
-/* OVERLAY DO MODAL */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -790,7 +786,6 @@ ul {
     pointer-events: auto;
 }
 
-/* CARTÃO DO MODAL */
 .modal-card {
     background-color: #FFFFFF;
     color: var(--text-main);
@@ -896,7 +891,7 @@ ul {
 }
 
 /* =========================================================================
-   ACESSIBILIDADE & REDUCED MOTION
+   ACESSIBILIDADE & RESPONSIVIDADE
    ========================================================================= */
 @media (prefers-reduced-motion: reduce) {
     body, .reveal, .card, .btn-primary, .btn-secondary, .btn-progress-bar, .modal-card {
@@ -907,9 +902,6 @@ ul {
     }
 }
 
-/* =========================================================================
-   RESPONSIVIDADE (MOBILE & TABLETS) E PREVENÇÃO DE QUEBRAS COM ZOOM
-   ========================================================================= */
 @media (max-width: 900px) {
     .hero-content h1 {
         font-size: 2.4rem;
