@@ -1,6 +1,5 @@
 /**
  * DADOS DOS MATERIAIS
- * 5 Categorias oficiais sem a área de vestimentas/uniformes.
  */
 const materialsData = [
     {
@@ -158,7 +157,7 @@ function renderMaterialsCards() {
                 <h3>${material.title}</h3>
                 <p>${material.description}</p>
                 ${isFleetLink 
-                    ? `<a href="#frota" class="btn-secondary">${material.buttonText}</a>`
+                    ? `<a href="pages/fleet.html" class="btn-secondary">${material.buttonText} &rarr;</a>`
                     : `<button class="btn-secondary btn-toast">${material.buttonText}</button>`
                 }
             </div>
@@ -210,13 +209,23 @@ function openFleetModal(plane) {
     const modal = document.getElementById('fleet-modal');
     if (!modal) return;
 
-    document.getElementById('modal-img-placeholder').innerText = plane.placeholder;
+    const modalImgPlaceholder = document.getElementById('modal-img-placeholder');
+    if (modalImgPlaceholder) modalImgPlaceholder.innerText = plane.placeholder;
+
     const badgeElem = document.getElementById('modal-badge');
-    badgeElem.innerText = plane.badge;
-    badgeElem.className = `category-badge ${plane.badgeClass}`;
-    document.getElementById('modal-title').innerText = plane.name;
-    document.getElementById('modal-desc').innerText = plane.description;
-    document.getElementById('modal-details').innerText = plane.details;
+    if (badgeElem) {
+        badgeElem.innerText = plane.badge;
+        badgeElem.className = `category-badge ${plane.badgeClass}`;
+    }
+
+    const titleElem = document.getElementById('modal-title');
+    if (titleElem) titleElem.innerText = plane.name;
+
+    const descElem = document.getElementById('modal-desc');
+    if (descElem) descElem.innerText = plane.description;
+
+    const detailsElem = document.getElementById('modal-details');
+    if (detailsElem) detailsElem.innerText = plane.details;
 
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
@@ -322,6 +331,8 @@ function setupScrollspy() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
+    if (sections.length === 0 || navLinks.length === 0) return;
+
     window.addEventListener('scroll', () => {
         let currentSection = '';
         const scrollPosition = window.scrollY + 140;
@@ -336,16 +347,19 @@ function setupScrollspy() {
         });
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                link.classList.remove('active');
+                if (href === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
             }
         });
     });
 }
 
 /**
- * Sistema de Notificação Toast (Aviso elegante ao clicar em botões de placeholders)
+ * Sistema de Notificação Toast
  */
 function setupToastSystem() {
     let container = document.querySelector('.toast-container');
