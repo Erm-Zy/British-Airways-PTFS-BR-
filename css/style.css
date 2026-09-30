@@ -136,7 +136,7 @@ ul {
 /* =========================================================================
    BOTÕES E COMPONENTE CTA
    ========================================================================= */
-.btn-primary, .btn-secondary {
+.btn-primary, .btn-secondary, .btn-back {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -185,6 +185,22 @@ ul {
     background-color: #FFFFFF;
     color: var(--primary-color);
     border-color: #FFFFFF;
+}
+
+.btn-back {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 16px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.btn-back:hover {
+    background-color: var(--primary-color);
+    color: #FFFFFF;
+    border-color: var(--primary-color);
 }
 
 /* =========================================================================
@@ -285,11 +301,11 @@ ul {
 }
 
 /* =========================================================================
-   SEÇÃO HERO
+   SEÇÃO HERO E PAGE HEADER
    ========================================================================= */
 .hero {
     position: relative;
-    min-height: 82vh;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -322,7 +338,7 @@ ul {
     font-size: 0.85rem;
     font-weight: 500;
     letter-spacing: 0.5px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     backdrop-filter: blur(8px);
 }
 
@@ -351,11 +367,41 @@ ul {
     align-items: center;
 }
 
+.page-header {
+    margin-top: 72px;
+    padding: 48px 0 32px 0;
+    background-color: var(--surface-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.page-header-content {
+    max-width: 720px;
+}
+
+.page-header-content .hero-badge {
+    background: #E2E8F0;
+    color: var(--primary-color);
+    border: 1px solid var(--border-color);
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.page-header p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+}
+
 /* =========================================================================
    ESTRUTURA DE SEÇÕES E GRIDS
    ========================================================================= */
 .section {
-    padding: 96px 0;
+    padding: 80px 0;
 }
 
 .bg-light {
@@ -430,17 +476,11 @@ ul {
     line-height: 1.5;
     flex-grow: 1;
 }
-
-.card-body .btn-secondary {
-    align-self: flex-start;
-    padding: 10px 20px;
-    font-size: 0.88rem;
-}
 /* =========================================================================
    SEÇÃO DE FROTA & CATEGORIAS
    ========================================================================= */
 .fleet-category {
-    margin-bottom: 64px;
+    margin-bottom: 60px;
 }
 
 .fleet-category:last-child {
@@ -451,8 +491,8 @@ ul {
     margin-bottom: 24px;
 }
 
-.category-header h3 {
-    font-size: 1.5rem;
+.category-header h2 {
+    font-size: 1.6rem;
     color: var(--primary-color);
     font-weight: 700;
     margin-top: 8px;
@@ -542,6 +582,13 @@ ul {
 .fleet-card:hover .fleet-card-action {
     color: var(--accent-color);
     transform: translateX(3px);
+}
+
+.bottom-return-container {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
 }
 
 /* =========================================================================
